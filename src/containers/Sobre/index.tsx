@@ -1,14 +1,20 @@
 import Titulo from '../../components/Titulo'
+import Paragrafo from '../../components/Paragrafo'
+import { GithubSecao } from './styles'
 
 const Sobre = () => (
   <section>
-    <Titulo>Sobre</Titulo>
-    <p>
+    <Titulo fontSize={16}>Sobreeee</Titulo>
+    <Paragrafo tipo="Secundario">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta atque illo
       veniam distinctio, enim nostrum quaerat! Eligendi, facere nesciunt,
       excepturi voluptatum eveniet dolor reprehenderit alias quae id ipsum, et
       molestias!
-    </p>
+    </Paragrafo>
+    <GithubSecao>
+      <img src="https://github-readme-stats.vercel.app/api?username=SdneyFernandes&show_icons=true&theme=dracula&include_all_commits=true&count_private=true" />
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SdneyFernandes&layout=compact&langs_count=7&theme=dracula" />
+    </GithubSecao>
   </section>
 )
 
