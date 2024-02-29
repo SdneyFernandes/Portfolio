@@ -10,38 +10,36 @@ const Projectos = () => (
       <li>
         <Projecto />
       </li>
-    </Lista>
-    <Lista>
       <li>
         <Projecto />
       </li>
-    </Lista>
-    <Lista>
       <li>
         <Projecto />
       </li>
-    </Lista>
-    <Lista>
       <li>
         <Projecto />
       </li>
-    </Lista>
-    <Lista>
       <li>
         <Projecto />
       </li>
-    </Lista>
-    <Lista>
       <li>
         <Projecto />
       </li>
-    </Lista>
-    <Lista>
       <li>
         <Projecto />
       </li>
-    </Lista>
-    <Lista>
+      <li>
+        <Projecto />
+      </li>
+      <li>
+        <Projecto />
+      </li>
+      <li>
+        <Projecto />
+      </li>
+      <li>
+        <Projecto />
+      </li>
       <li>
         <Projecto />
       </li>
