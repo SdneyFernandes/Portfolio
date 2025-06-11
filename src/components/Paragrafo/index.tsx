@@ -1,14 +1,5 @@
 import { P } from './styles'
 
-export type Props = {
-  children: string
-  tipo?: 'Principal' | 'Secundario'
-  fontSize?: number
-}
-const Paragrafo = ({ children, tipo = 'Principal', fontSize }: Props) => (
-  <P fontSize={fontSize} tipo={tipo}>
-    {children}
-  </P>
-)
+const Paragrafo = () => <P />
 
 export default Paragrafo

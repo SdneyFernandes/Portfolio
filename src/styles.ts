@@ -1,19 +1,19 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import { Theme } from './themes/dark'
 
-const EstiloGlobal = createGlobalStyle`
-*{
-  margin:0;
-  padding:0;
-  list-style:none;
-
+export const cores = {
+  corDeFundo: '#000000',
+  corDeFundo1: '#000035',
+  corDeFundo3: 'rgb(0, 25, 60, 0.30)',
+  corPrimaria: ' #f67828',
+  corSecundaria: '#FFFFFF',
+  corDeFundo2: '#003366',
+  corTercearia: '#335b84'
 }
 
+const EstiloGlobal = createGlobalStyle`
 body{
-  padding-top: 80px;
-  padding-bottom: 80px;
-  background-color: ${(props) => (props.theme as Theme).corDeFundo};
-
+  background-color: ${cores.corDeFundo};
+  font-family: Gill Sans, sans-serif;
   @media (max-width: 768px) {
   padding-top:16px;
   }
@@ -23,13 +23,6 @@ body{
 export default EstiloGlobal
 
 export const Container = styled.div`
-  max-width: 1024px;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 128px auto;
-  column-gap: 56px;
-
   @media (max-width: 768px) {
     max-width: 80%;
     display: block;
