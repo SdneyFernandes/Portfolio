@@ -72,14 +72,22 @@ export default function Skills() {
       reset: true
     })
   }, [])
-
   useEffect(() => {
     const fetchLanguages = async () => {
       const username = 'SdneyFernandes'
+      const token =
+        (typeof process !== 'undefined' &&
+          process.env.REACT_APP_GITHUB_TOKEN) ||
+        ''
 
       try {
         const reposRes = await axios.get<GitHubRepo[]>(
-          `https://api.github.com/users/${username}/repos`
+          `https://api.github.com/users/${username}/repos`,
+          {
+            headers: {
+              Authorization: `token ${token}`
+            }
+          }
         )
 
         const languageTotals: Record<string, number> = {}
@@ -87,7 +95,12 @@ export default function Skills() {
         await Promise.all(
           reposRes.data.map(async (repo) => {
             const langRes = await axios.get<Record<string, number>>(
-              repo.languages_url
+              repo.languages_url,
+              {
+                headers: {
+                  Authorization: `token ${token}`
+                }
+              }
             )
 
             Object.entries(langRes.data).forEach(([lang, size]) => {
