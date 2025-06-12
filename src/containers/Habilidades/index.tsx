@@ -75,39 +75,54 @@ export default function Skills() {
   useEffect(() => {
     const fetchLanguages = async () => {
       const username = 'SdneyFernandes'
-      const token =
-        (typeof process !== 'undefined' &&
-          process.env.REACT_APP_GITHUB_TOKEN) ||
-        ''
+      const token = process.env.REACT_APP_GITHUB_TOKEN
+
+      if (!token) {
+        console.error(
+          'Token do GitHub não encontrado! Verifique suas variáveis de ambiente.'
+        )
+        return
+      }
 
       try {
+        console.log('Iniciando requisição para API do GitHub...')
+
         const reposRes = await axios.get<GitHubRepo[]>(
           `https://api.github.com/users/${username}/repos`,
           {
             headers: {
-              Authorization: `token ${token}`
+              Authorization: `token ${token}`,
+              Accept: 'application/vnd.github.v3+json'
             }
           }
         )
 
+        console.log('Repositórios recebidos:', reposRes.data.length)
+
         const languageTotals: Record<string, number> = {}
 
-        await Promise.all(
-          reposRes.data.map(async (repo) => {
-            const langRes = await axios.get<Record<string, number>>(
-              repo.languages_url,
-              {
-                headers: {
-                  Authorization: `token ${token}`
-                }
-              }
-            )
+        const reposToProcess = reposRes.data.slice(0, 5)
 
-            Object.entries(langRes.data).forEach(([lang, size]) => {
-              if (typeof size === 'number') {
+        await Promise.all(
+          reposToProcess.map(async (repo) => {
+            try {
+              console.log(`Processando repositório: ${repo.name}`)
+              const langRes = await axios.get<Record<string, number>>(
+                repo.languages_url,
+                {
+                  headers: {
+                    Authorization: `token ${token}`,
+                    Accept: 'application/vnd.github.v3+json'
+                  }
+                }
+              )
+
+              Object.entries(langRes.data).forEach(([lang, size]) => {
                 languageTotals[lang] = (languageTotals[lang] || 0) + size
-              }
-            })
+              })
+            } catch (repoError) {
+              console.error(`Erro no repositório ${repo.name}:`, repoError)
+            }
           })
         )
 
@@ -115,15 +130,40 @@ export default function Skills() {
           (acc, val) => acc + val,
           0
         )
-
         const normalized: Record<string, number> = {}
+
         Object.entries(languageTotals).forEach(([lang, val]) => {
           normalized[lang] = Math.round((val / total) * 100)
         })
 
+        console.log('Dados normalizados:', normalized)
         setLanguagesData(normalized)
       } catch (err) {
-        console.error('Erro ao buscar dados do GitHub:', err)
+        if (axios.isAxiosError(err)) {
+          console.error('Detalhes do erro:')
+          console.error('Status:', err.response?.status)
+          console.error('Headers:', err.response?.headers)
+
+          if (err.response?.status === 403) {
+            const limitRemaining = err.response.headers['x-ratelimit-remaining']
+            const limitReset = new Date(
+              parseInt(err.response.headers['x-ratelimit-reset']) * 1000
+            )
+
+            console.error(`Limite de requisições: ${limitRemaining} restantes`)
+            console.error(`Próximo reset: ${limitReset}`)
+
+            if (limitRemaining === '0') {
+              alert(
+                `Limite de requisições excedido! Tente novamente após ${limitReset}`
+              )
+            } else {
+              alert('Token de acesso pode estar inválido ou sem permissões')
+            }
+          }
+        } else {
+          console.error('Erro desconhecido:', err)
+        }
       }
     }
 
