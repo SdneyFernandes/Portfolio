@@ -1,5 +1,5 @@
 // /components/Skills.tsx
-import { useEffect, useState } from 'react'
+import { JSX, useEffect, useState } from 'react'
 import axios from 'axios'
 import { FaReact, FaGitAlt, FaDocker, FaJava, FaCode } from 'react-icons/fa'
 import {
