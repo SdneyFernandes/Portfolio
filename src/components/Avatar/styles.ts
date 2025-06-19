@@ -4,5 +4,5 @@ export const FotoPerfil = styled.img`
   width: 345px;
   height: 345px;
   border-radius: 50%;
-  margin-left: 52px;
+  margin-left: 51px;
 `
