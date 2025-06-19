@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa'
 import {
   HeaderContainer,
   Logo,
@@ -11,7 +11,8 @@ import {
   NavLink,
   MobileMenuButton,
   MobileMenu,
-  MobileNavLink
+  MobileNavLink,
+  ScrollIndicator
 } from './styles'
 
 export default function Header() {
@@ -23,24 +24,30 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
 
-      const sections = ['about', 'services', 'skills', 'projects', 'contact']
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(entry.target.id)
+            }
+          })
+        },
+        { threshold: 0.5 }
+      )
+
+      document.querySelectorAll('section').forEach((section) => {
+        observer.observe(section)
+      })
+
+      return () => observer.disconnect()
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleNavClick = (sectionId: string) => {
+  const handleNavClick = (sectionId: string, e: React.MouseEvent) => {
+    e.preventDefault()
     setMobileMenuOpen(false)
     const element = document.getElementById(sectionId)
     if (element) {
@@ -53,123 +60,61 @@ export default function Header() {
 
   return (
     <HeaderContainer $isScrolled={isScrolled}>
-      <Logo href="#about" onClick={() => handleNavClick('about')}>
+      <Logo
+        href="#"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <LogoText>Sdney</LogoText>
-        <LogoDot>.</LogoDot>
+        <LogoDot />
       </Logo>
 
       <NavLinks>
-        <NavItem $active={activeSection === 'about'}>
-          <NavLink
-            href="#about"
-            $active={activeSection === 'about'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavClick('about')
-            }}
-          >
-            Sobre
-          </NavLink>
-        </NavItem>
-
-        <NavItem $active={activeSection === 'services'}>
-          <NavLink
-            href="#services"
-            $active={activeSection === 'services'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavClick('services')
-            }}
-          >
-            Serviços
-          </NavLink>
-        </NavItem>
-        <NavItem $active={activeSection === 'skills'}>
-          <NavLink
-            href="#skills"
-            $active={activeSection === 'skills'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavClick('skills')
-            }}
-          >
-            Habilidades
-          </NavLink>
-        </NavItem>
-        <NavItem $active={activeSection === 'projects'}>
-          <NavLink
-            href="#projects"
-            $active={activeSection === 'projects'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavClick('projects')
-            }}
-          >
-            Projetos
-          </NavLink>
-        </NavItem>
-        <NavItem $active={activeSection === 'contact'}>
-          <NavLink
-            href="#contact"
-            $active={activeSection === 'contact'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavClick('contact')
-            }}
-          >
-            Contato
-          </NavLink>
-        </NavItem>
+        {['about', 'services', 'skills', 'projects', 'contact'].map((item) => (
+          <NavItem key={item} $active={activeSection === item}>
+            <NavLink
+              href={`#${item}`}
+              $active={activeSection === item}
+              onClick={(e: React.MouseEvent) => handleNavClick(item, e)}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </NavLink>
+          </NavItem>
+        ))}
       </NavLinks>
 
       <MobileMenuButton
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        whileTap={{ scale: 0.9 }}
+        aria-label="Menu"
       >
         {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </MobileMenuButton>
 
       <AnimatePresence>
         {mobileMenuOpen && (
-          <MobileMenu
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <MobileNavLink
-              $active={activeSection === 'about'}
-              onClick={() => handleNavClick('about')}
-            >
-              Sobre
-            </MobileNavLink>
-            <MobileNavLink
-              $active={activeSection === 'services'}
-              onClick={() => handleNavClick('services')}
-            >
-              Serviços
-            </MobileNavLink>
-            <MobileNavLink
-              $active={activeSection === 'skills'}
-              onClick={() => handleNavClick('skills')}
-            >
-              Habilidades
-            </MobileNavLink>
-            <MobileNavLink
-              $active={activeSection === 'projects'}
-              onClick={() => handleNavClick('projects')}
-            >
-              Projetos
-            </MobileNavLink>
-            <MobileNavLink
-              $active={activeSection === 'contact'}
-              onClick={() => handleNavClick('contact')}
-            >
-              Contato
-            </MobileNavLink>
+          <MobileMenu>
+            {['about', 'services', 'skills', 'projects', 'contact'].map(
+              (item) => (
+                <MobileNavLink
+                  key={item}
+                  href={`#${item}`}
+                  $active={activeSection === item}
+                  onClick={(e: React.MouseEvent) => handleNavClick(item, e)}
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </MobileNavLink>
+              )
+            )}
           </MobileMenu>
         )}
       </AnimatePresence>
+
+      {!mobileMenuOpen && activeSection === '' && (
+        <ScrollIndicator>
+          <FaChevronDown size={20} />
+        </ScrollIndicator>
+      )}
     </HeaderContainer>
   )
 }

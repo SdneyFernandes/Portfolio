@@ -22,7 +22,7 @@ export default function Icons() {
         {FaLinkedin({})}
       </IconLink>
 
-      <IconLink href="mailto:fsidney987@gmail.com" aria-label="Email">
+      <IconLink href="#contact" aria-label="Email">
         {FaEnvelope({})}
       </IconLink>
     </IconsContainer>

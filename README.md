@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Portfólio em React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto de prática em **React**, com o objetivo de aprimorar habilidades em **desenvolvimento front-end**, mesmo tendo foco principal em **Java** no dia a dia.
 
-## Available Scripts
+## 📊 Sobre o projeto
 
-In the project directory, you can run:
+Este projeto consiste na transformação de um projeto simples em um portfólio mais completo, com interface moderna e recursos reais. Esta é a **primeira versão** do projeto e serve como base para futuras melhorias.
 
-### `npm start`
+## 🚀 Tecnologias utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* React 19
+* TypeScript
+* Styled Components
+* React Icons
+* ScrollReveal.js
+* EmailJS
+* Axios
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Deploy: [Vercel](https://portfolio-ysp1-40zkbkgc1-sdney-fernandes-projects.vercel.app/)
 
-### `npm test`
+## 🔧 Funcionalidades
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Seção de contato com envio de e-mail
+* Integração com API do GitHub para exibir uso de linguagens
+* Animações com ScrollReveal
+* Layout moderno com Styled Components
 
-### `npm run build`
+## 📈 Melhorias pendentes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Criar componentes reutilizáveis
+* Padronizar variáveis de cor em tema global
+* Melhorar responsividade mobile
+* Otimizar performance do carregamento de dados
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔧 Problemas resolvidos (aprendizados)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Durante o desenvolvimento, alguns desafios surgiram e foram solucionados como forma de aprendizado:
 
-### `npm run eject`
+* ❌ **Erro TS2786 em react-icons**: resolvido com atualização da versão da biblioteca.
+* ⚠️ **Limite da API do GitHub (403)**: solucionado com uso de token via variável de ambiente e autenticação segura.
+* ❌ **Conflito de dependências com React 19**.
+* ⚠️ **ImportMeta.env com erro TS2339**: resolvido usando `process.env.REACT_APP_...` corretamente.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🙌 Contribuição futura
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O projeto está aberto para evoluções e refatoramentos futuros com foco em:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Acessibilidade
+* Mobile-first
+* Testes unitários
+* Storybook para componentes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Desenvolvido com dedicação por **Sdney Fernandes** ✨

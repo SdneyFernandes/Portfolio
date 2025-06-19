@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import {
   FaGlobe,
   FaShoppingCart,
@@ -7,7 +7,6 @@ import {
   FaMobileAlt,
   FaChartLine
 } from 'react-icons/fa'
-import ScrollReveal from 'scrollreveal'
 import {
   Container,
   Title,
@@ -21,165 +20,169 @@ import {
   ServiceContent,
   ServiceFeatures,
   ServiceIcon,
-  ServicesGrid
+  ServicesGrid,
+  HighlightText
 } from './styles'
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 }
+}
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+}
+
+const services = [
+  {
+    icon: <FaGlobe size={32} />,
+    title: 'Sites Profissionais',
+    description:
+      'Desenvolvimento de websites modernos e responsivos que representam sua marca e convertem visitantes em clientes.',
+    features: [
+      'Design responsivo e acessível',
+      'Otimização SEO avançada',
+      'Integração com redes sociais',
+      'Performance de alto nível'
+    ],
+    cta: 'Quero um site'
+  },
+  {
+    icon: <FaShoppingCart size={32} />,
+    title: 'E-commerce Completo',
+    description:
+      'Lojas virtuais de alto desempenho com taxa de conversão otimizada e experiência de compra premium.',
+    features: [
+      'Checkout seguro e otimizado',
+      'Integração com marketplaces',
+      'Painel administrativo completo',
+      'Relatórios de desempenho'
+    ],
+    cta: 'Quero minha loja'
+  },
+  {
+    icon: <FaMobileAlt size={32} />,
+    title: 'Aplicativos Web Progressivos',
+    description:
+      'PWAs com experiência de app nativo, funcionamento offline e engajamento aumentado.',
+    features: [
+      'Instalação direta do navegador',
+      'Notificações push',
+      'Sincronização em background',
+      'Performance otimizada'
+    ],
+    cta: 'Quero um app'
+  },
+  {
+    icon: <FaCogs size={32} />,
+    title: 'Sistemas Personalizados',
+    description:
+      'Soluções sob medida para automatizar processos e aumentar sua produtividade em até 200%.',
+    features: [
+      'CRM e gestão de clientes',
+      'Automação de workflows',
+      'Integração com APIs',
+      'Dashboards inteligentes'
+    ],
+    cta: 'Quero um sistema'
+  },
+  {
+    icon: <FaChartLine size={32} />,
+    title: 'Otimização Técnica',
+    description:
+      'Diagnóstico e correção de problemas de performance, segurança e experiência do usuário.',
+    features: [
+      'Auditoria completa',
+      'Otimização de carregamento',
+      'Melhoria de SEO técnico',
+      'Análise de concorrência'
+    ],
+    cta: 'Otimizar meu projeto'
+  },
+  {
+    icon: <FaHeadset size={32} />,
+    title: 'Consultoria Estratégica',
+    description:
+      'Planejamento tecnológico para alinhar sua infraestrutura com seus objetivos de negócio.',
+    features: [
+      'Roadmap tecnológico',
+      'Arquitetura escalável',
+      'Análise de viabilidade',
+      'Gestão de equipes'
+    ],
+    cta: 'Falar com especialista'
+  }
+]
+
 export default function Services() {
-  useEffect(() => {
-    ScrollReveal().reveal('.services-title', {
-      delay: 200,
-      distance: '20px',
-      origin: 'bottom',
-      reset: true
-    })
-
-    ScrollReveal().reveal('.services-description', {
-      delay: 250,
-      distance: '20px',
-      origin: 'bottom',
-      reset: true
-    })
-
-    ScrollReveal().reveal('.service-card', {
-      delay: 300,
-      distance: '20px',
-      origin: 'bottom',
-      interval: 100,
-      reset: true
-    })
-  }, [])
-
   return (
     <Container id="services">
       <SectionHeader>
-        <Title className="services-title">Como Posso Ajudar</Title>
-        <Description className="services-description">
-          Soluções digitais personalizadas para impulsionar seu negócio.
-          Combinando tecnologia e design para criar experiências que geram
-          resultados.
-        </Description>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeIn}
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <Title>
+            Soluções que <HighlightText>impulsionam</HighlightText> seu negócio
+          </Title>
+          <Description>
+            Ofereço <HighlightText>resultados mensuráveis</HighlightText>{' '}
+            através de tecnologia de ponta. Cada projeto é otimizado para
+            desempenho, conversão e crescimento sustentável.
+          </Description>
+        </motion.div>
       </SectionHeader>
 
-      <ServicesGrid>
-        <ServiceCard className="service-card">
-          <ServiceIcon>
-            <FaGlobe size={32} />
-          </ServiceIcon>
-          <ServiceContent>
-            <ServiceTitle>Sites Profissionais</ServiceTitle>
-            <ServiceDescription>
-              Desenvolvimento de websites modernos e responsivos que representam
-              sua marca e convertem visitantes em clientes.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <FeatureItem>Design responsivo</FeatureItem>
-              <FeatureItem>Otimização SEO</FeatureItem>
-              <FeatureItem>Integração com redes sociais</FeatureItem>
-              <FeatureItem>Formulários de contato</FeatureItem>
-            </ServiceFeatures>
-          </ServiceContent>
-          <ServiceButton href="#contact">Quero um site</ServiceButton>
-        </ServiceCard>
-
-        <ServiceCard className="service-card">
-          <ServiceIcon>
-            <FaShoppingCart size={32} />
-          </ServiceIcon>
-          <ServiceContent>
-            <ServiceTitle>E-commerce</ServiceTitle>
-            <ServiceDescription>
-              Lojas virtuais completas com carrinho de compras, pagamentos
-              integrados e painel administrativo intuitivo.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <FeatureItem>Gateway de pagamentos</FeatureItem>
-              <FeatureItem>Gestão de estoque</FeatureItem>
-              <FeatureItem>Relatórios de vendas</FeatureItem>
-              <FeatureItem>Integração com marketplaces</FeatureItem>
-            </ServiceFeatures>
-          </ServiceContent>
-          <ServiceButton href="#contact">Quero minha loja</ServiceButton>
-        </ServiceCard>
-
-        <ServiceCard className="service-card">
-          <ServiceIcon>
-            <FaMobileAlt size={32} />
-          </ServiceIcon>
-          <ServiceContent>
-            <ServiceTitle>Aplicativos Web</ServiceTitle>
-            <ServiceDescription>
-              Aplicações web progressivas (PWAs) que funcionam como apps
-              nativos, com desempenho e experiência premium.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <FeatureItem>Funcionamento offline</FeatureItem>
-              <FeatureItem>Notificações push</FeatureItem>
-              <FeatureItem>Instalação na home screen</FeatureItem>
-              <FeatureItem>Atualizações automáticas</FeatureItem>
-            </ServiceFeatures>
-          </ServiceContent>
-          <ServiceButton href="#contact">Quero um app</ServiceButton>
-        </ServiceCard>
-
-        <ServiceCard className="service-card">
-          <ServiceIcon>
-            <FaCogs size={32} />
-          </ServiceIcon>
-          <ServiceContent>
-            <ServiceTitle>Sistemas Personalizados</ServiceTitle>
-            <ServiceDescription>
-              Desenvolvimento de sistemas sob medida para automatizar processos
-              e aumentar a eficiência do seu negócio.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <FeatureItem>CRM e gestão de clientes</FeatureItem>
-              <FeatureItem>Sistemas de agendamento</FeatureItem>
-              <FeatureItem>Controle financeiro</FeatureItem>
-              <FeatureItem>Relatórios customizados</FeatureItem>
-            </ServiceFeatures>
-          </ServiceContent>
-          <ServiceButton href="#contact">Quero um sistema</ServiceButton>
-        </ServiceCard>
-
-        <ServiceCard className="service-card">
-          <ServiceIcon>
-            <FaChartLine size={32} />
-          </ServiceIcon>
-          <ServiceContent>
-            <ServiceTitle>Otimização e Performance</ServiceTitle>
-            <ServiceDescription>
-              Melhoria de performance, segurança e experiência do usuário em
-              aplicações existentes.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <FeatureItem>Análise de performance</FeatureItem>
-              <FeatureItem>Otimização SEO</FeatureItem>
-              <FeatureItem>Migração de tecnologias</FeatureItem>
-              <FeatureItem>Refatoração de código</FeatureItem>
-            </ServiceFeatures>
-          </ServiceContent>
-          <ServiceButton href="#contact">Otimizar meu projeto</ServiceButton>
-        </ServiceCard>
-
-        <ServiceCard className="service-card">
-          <ServiceIcon>
-            <FaHeadset size={32} />
-          </ServiceIcon>
-          <ServiceContent>
-            <ServiceTitle>Consultoria Técnica</ServiceTitle>
-            <ServiceDescription>
-              Acompanhamento especializado para ajudar a definir a melhor
-              estratégia tecnológica para seu negócio.
-            </ServiceDescription>
-            <ServiceFeatures>
-              <FeatureItem>Planejamento de projetos</FeatureItem>
-              <FeatureItem>Arquitetura de software</FeatureItem>
-              <FeatureItem>Análise de viabilidade</FeatureItem>
-              <FeatureItem>Orientação tecnológica</FeatureItem>
-            </ServiceFeatures>
-          </ServiceContent>
-          <ServiceButton href="#contact">Falar com especialista</ServiceButton>
-        </ServiceCard>
+      <ServicesGrid
+        as={motion.div}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+      >
+        {services.map((service, index) => (
+          <ServiceCard
+            as={motion.div}
+            variants={fadeIn}
+            key={index}
+            whileHover={{
+              y: -10,
+              boxShadow: '0 15px 30px rgba(246, 120, 40, 0.2)'
+            }}
+          >
+            <ServiceIcon>
+              <motion.div whileHover={{ scale: 1.1 }}>
+                {service.icon}
+              </motion.div>
+            </ServiceIcon>
+            <ServiceContent>
+              <ServiceTitle>{service.title}</ServiceTitle>
+              <ServiceDescription>{service.description}</ServiceDescription>
+              <ServiceFeatures>
+                {service.features.map((feature, i) => (
+                  <FeatureItem key={i}>{feature}</FeatureItem>
+                ))}
+              </ServiceFeatures>
+            </ServiceContent>
+            <ServiceButton
+              href="#contact"
+              as={motion.a}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {service.cta}
+            </ServiceButton>
+          </ServiceCard>
+        ))}
       </ServicesGrid>
     </Container>
   )

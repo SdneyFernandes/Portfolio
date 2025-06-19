@@ -1,15 +1,28 @@
-// /components/Skills.tsx
-import { JSX, useEffect, useState } from 'react'
-import axios from 'axios'
-import { FaReact, FaGitAlt, FaDocker, FaJava, FaCode } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { cores } from '../../styles'
+import {
+  FaReact,
+  FaGitAlt,
+  FaDocker,
+  FaJava,
+  FaCode,
+  FaAws,
+  FaCogs,
+  FaServer,
+  FaDatabase
+} from 'react-icons/fa'
 import {
   SiSpring,
   SiTypescript,
   SiMysql,
   SiJunit5,
-  SiStyledcomponents
+  SiStyledcomponents,
+  SiRedux,
+  SiNextdotjs,
+  SiKubernetes,
+  SiGraphql,
+  SiJenkins
 } from 'react-icons/si'
-import ScrollReveal from 'scrollreveal'
 import {
   Container,
   SectionHeader,
@@ -24,184 +37,159 @@ import {
   SkillIcon,
   SkillName,
   SkillLevel,
-  LevelBar
+  LevelBar,
+  HighlightText,
+  ProfessionalSummary
 } from './styles'
 
-const LANGUAGE_ICONS: Record<string, JSX.Element> = {
-  Java: <FaJava size={28} />,
-  TypeScript: <SiTypescript size={28} />,
-  JavaScript: <FaReact size={28} />,
-  HTML: <FaCode size={28} />,
-  CSS: <SiStyledcomponents size={28} />,
-  Shell: <FaGitAlt size={28} />,
-  Dockerfile: <FaDocker size={28} />,
-  Groovy: <SiSpring size={28} />,
-  JupyterNotebook: <SiJunit5 size={28} />,
-  SQL: <SiMysql size={28} />
+const fadeIn = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 }
 }
 
-interface GitHubRepo {
-  id: number
-  name: string
-  languages_url: string
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
 }
+
+const skillCategories = [
+  {
+    title: 'Backend',
+    icon: <FaServer size={24} />,
+    skills: [
+      { icon: <FaJava size={28} />, name: 'Java', level: 90 },
+      { icon: <SiSpring size={28} />, name: 'Spring Boot', level: 85 },
+      { icon: <SiMysql size={28} />, name: 'MySQL', level: 60 },
+      { icon: <SiJunit5 size={28} />, name: 'JUnit', level: 55 },
+      { icon: <FaDatabase size={28} />, name: 'MongoDB', level: 20 },
+      { icon: <SiGraphql size={28} />, name: 'GraphQL', level: 25 }
+    ]
+  },
+  {
+    title: 'Frontend',
+    icon: <FaReact size={24} />,
+    skills: [
+      { icon: <FaReact size={28} />, name: 'React', level: 85 },
+      { icon: <SiRedux size={28} />, name: 'Redux', level: 80 },
+      { icon: <SiTypescript size={28} />, name: 'TypeScript', level: 80 },
+      {
+        icon: <SiStyledcomponents size={28} />,
+        name: 'Styled Components',
+        level: 75
+      },
+      { icon: <SiNextdotjs size={28} />, name: 'Next.js', level: 10 }
+    ]
+  },
+  {
+    title: 'DevOps & Cloud',
+    icon: <FaCogs size={24} />,
+    skills: [
+      { icon: <FaDocker size={28} />, name: 'Docker', level: 50 },
+      { icon: <SiKubernetes size={28} />, name: 'Kubernetes', level: 35 },
+      { icon: <FaAws size={28} />, name: 'AWS', level: 30 },
+      { icon: <SiJenkins size={28} />, name: 'Jenkins', level: 20 },
+      { icon: <FaGitAlt size={28} />, name: 'Git', level: 85 }
+    ]
+  },
+  {
+    title: 'Em Aprendizado',
+    icon: <FaCode size={24} />,
+    skills: [
+      { icon: <SiKubernetes size={28} />, name: 'K8s Avançado', level: 40 },
+      { icon: <FaAws size={28} />, name: 'AWS Solutions', level: 45 },
+      { icon: <SiNextdotjs size={28} />, name: 'Next.js 14', level: 55 }
+    ]
+  }
+]
 
 export default function Skills() {
-  const [languagesData, setLanguagesData] = useState<Record<string, number>>({})
-
-  useEffect(() => {
-    ScrollReveal().reveal('.skills-title', {
-      delay: 200,
-      distance: '20px',
-      origin: 'bottom',
-      reset: true
-    })
-
-    ScrollReveal().reveal('.skills-description', {
-      delay: 250,
-      distance: '20px',
-      origin: 'bottom',
-      reset: true
-    })
-
-    ScrollReveal().reveal('.skills-category', {
-      delay: 300,
-      distance: '20px',
-      origin: 'bottom',
-      interval: 100,
-      reset: true
-    })
-  }, [])
-  useEffect(() => {
-    const fetchLanguages = async () => {
-      const username = 'SdneyFernandes'
-      const token = process.env.REACT_APP_GITHUB_TOKEN
-
-      if (!token) {
-        console.error(
-          'Token do GitHub não encontrado! Verifique suas variáveis de ambiente.'
-        )
-        return
-      }
-
-      try {
-        console.log('Iniciando requisição para API do GitHub...')
-
-        const reposRes = await axios.get<GitHubRepo[]>(
-          `https://api.github.com/users/${username}/repos`,
-          {
-            headers: {
-              Authorization: `token ${token}`,
-              Accept: 'application/vnd.github.v3+json'
-            }
-          }
-        )
-
-        console.log('Repositórios recebidos:', reposRes.data.length)
-
-        const languageTotals: Record<string, number> = {}
-
-        const reposToProcess = reposRes.data.slice(0, 5)
-
-        await Promise.all(
-          reposToProcess.map(async (repo) => {
-            try {
-              console.log(`Processando repositório: ${repo.name}`)
-              const langRes = await axios.get<Record<string, number>>(
-                repo.languages_url,
-                {
-                  headers: {
-                    Authorization: `token ${token}`,
-                    Accept: 'application/vnd.github.v3+json'
-                  }
-                }
-              )
-
-              Object.entries(langRes.data).forEach(([lang, size]) => {
-                languageTotals[lang] = (languageTotals[lang] || 0) + size
-              })
-            } catch (repoError) {
-              console.error(`Erro no repositório ${repo.name}:`, repoError)
-            }
-          })
-        )
-
-        const total = Object.values(languageTotals).reduce(
-          (acc, val) => acc + val,
-          0
-        )
-        const normalized: Record<string, number> = {}
-
-        Object.entries(languageTotals).forEach(([lang, val]) => {
-          normalized[lang] = Math.round((val / total) * 100)
-        })
-
-        console.log('Dados normalizados:', normalized)
-        setLanguagesData(normalized)
-      } catch (err) {
-        if (axios.isAxiosError(err)) {
-          console.error('Detalhes do erro:')
-          console.error('Status:', err.response?.status)
-          console.error('Headers:', err.response?.headers)
-
-          if (err.response?.status === 403) {
-            const limitRemaining = err.response.headers['x-ratelimit-remaining']
-            const limitReset = new Date(
-              parseInt(err.response.headers['x-ratelimit-reset']) * 1000
-            )
-
-            console.error(`Limite de requisições: ${limitRemaining} restantes`)
-            console.error(`Próximo reset: ${limitReset}`)
-
-            if (limitRemaining === '0') {
-              alert(
-                `Limite de requisições excedido! Tente novamente após ${limitReset}`
-              )
-            } else {
-              alert('Token de acesso pode estar inválido ou sem permissões')
-            }
-          }
-        } else {
-          console.error('Erro desconhecido:', err)
-        }
-      }
-    }
-
-    fetchLanguages()
-  }, [])
-
   return (
     <Container id="skills">
       <SectionHeader>
-        <Title className="skills-title">Minhas Habilidades</Title>
-        <Description className="skills-description">
-          Dados reais extraídos da API do GitHub, Dados reais extraídos da API
-          do GitHub, Dados reais extraídos da API do GitHub
-        </Description>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeIn}
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <Title>
+            Minhas <HighlightText>Expertises Técnicas</HighlightText>
+          </Title>
+          <Description>
+            Domínio completo do ciclo de desenvolvimento, desde a concepção até
+            a implantação em produção. Habilidades validadas em{' '}
+            <HighlightText>projetos reais</HighlightText> e constantemente
+            atualizadas.
+          </Description>
+        </motion.div>
       </SectionHeader>
 
-      <SkillsContainer>
-        <SkillsCategory className="skills-category">
-          <CategoryTitle>
-            <CategoryIcon>
-              <FaCode size={24} />
-            </CategoryIcon>
-            Linguagens
-          </CategoryTitle>
-          <SkillsGrid>
-            {Object.entries(languagesData).map(([lang, percent]) => (
-              <SkillCard key={lang}>
-                <SkillIcon>
-                  {LANGUAGE_ICONS[lang] || <FaCode size={28} />}
-                </SkillIcon>
-                <SkillName>{lang}</SkillName>
-                <SkillLevel>
-                  <LevelBar width={`${percent}%`} />
-                </SkillLevel>
-              </SkillCard>
-            ))}
-          </SkillsGrid>
-        </SkillsCategory>
+      <ProfessionalSummary>
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeIn}
+          viewport={{ once: true }}
+        >
+          Como <HighlightText>Full Stack Java/React</HighlightText>,
+          especializo-me em criar soluções escaláveis que combinam
+          <HighlightText> robustez no backend</HighlightText> com{' '}
+          <HighlightText>experiências modernas no frontend</HighlightText>.
+          Minha abordagem prioriza código limpo, testes automatizados e
+          arquiteturas bem definidas.
+        </motion.p>
+      </ProfessionalSummary>
+
+      <SkillsContainer
+        as={motion.div}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+      >
+        {skillCategories.map((category) => (
+          <SkillsCategory
+            as={motion.div}
+            variants={fadeIn}
+            key={category.title}
+            whileHover={{
+              y: -10,
+              boxShadow: `0 15px 30px ${cores.corPrimaria}20`
+            }}
+          >
+            <CategoryTitle>
+              <CategoryIcon>{category.icon}</CategoryIcon>
+              {category.title}
+            </CategoryTitle>
+            <SkillsGrid>
+              {category.skills.map((skill) => (
+                <SkillCard
+                  key={skill.name}
+                  as={motion.div}
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <SkillIcon>{skill.icon}</SkillIcon>
+                  <SkillName>{skill.name}</SkillName>
+                  <SkillLevel>
+                    <LevelBar
+                      width={`${skill.level}%`}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.3 }}
+                    />
+                  </SkillLevel>
+                </SkillCard>
+              ))}
+            </SkillsGrid>
+          </SkillsCategory>
+        ))}
       </SkillsContainer>
     </Container>
   )

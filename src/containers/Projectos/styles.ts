@@ -2,102 +2,165 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 export const Container = styled.section`
+  padding: 50px 20px;
   color: white;
-  padding: 80px 20px;
-  background-color: ${cores.corDeFundo3};
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 30%,
+        ${cores.corPrimaria}10 0%,
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        ${cores.corPrimaria}10 0%,
+        transparent 30%
+      );
+    z-index: 0;
+  }
+`
+
+export const SectionHeader = styled.div`
   text-align: center;
+  margin-bottom: 80px;
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 1;
 `
 
 export const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 20px;
-  color: ${cores.corPrimaria};
+  color: white;
+  line-height: 1.2;
+  font-weight: 700;
 `
 
 export const Description = styled.p`
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  line-height: 1.6;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+`
+
+export const HighlightText = styled.span`
+  color: ${cores.corPrimaria};
+  font-weight: 600;
 `
 
 export const Cards = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto 50px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 480px) {
+    gap: 20px;
+    padding: 0 10px;
+  }
 `
 
 export const Card = styled.div`
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(10, 10, 30, 0.7);
+  border-radius: 20px;
+  padding: 40px 30px;
+  border: 1px solid ${cores.corTercearia}30;
   transition: all 0.3s ease;
-  border: 1px solid rgba(82, 30, 95, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 85%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    border-color: ${cores.corPrimaria};
+    border-color: ${cores.corPrimaria}80;
+    background: rgba(10, 10, 30, 0.9);
   }
 `
 
 export const Icon = styled.div`
-  font-size: 2.5rem;
   color: ${cores.corPrimaria};
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 25px;
 `
 
 export const ProjectTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: ${cores.corPrimaria};
+  color: white;
+  font-weight: 600;
+  line-height: 1.3;
 `
 
 export const ProjectDescription = styled.p`
   font-size: 1rem;
-  margin-bottom: 20px;
-  line-height: 1.6;
+  margin: 15px 0;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  flex-grow: 1;
+  width: 100%;
 `
 
 export const TechList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 10px;
-  margin-bottom: 25px;
+  justify-content: center;
+  padding: 0;
+  margin: 20px 0;
+  list-style: none;
 `
 
 export const TechItem = styled.li`
-  background: rgba(82, 30, 95, 0.2);
+  background: rgba(246, 120, 40, 0.1);
   color: ${cores.corPrimaria};
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 0.8rem;
+  border: 1px solid ${cores.corPrimaria}30;
+  transition: all 0.3s ease;
 `
 
 export const Links = styled.div`
   display: flex;
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
 `
 
 export const ProjectLink = styled.a`
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 8px 15px;
+  gap: 8px;
+  padding: 10px 20px;
   background: ${cores.corPrimaria};
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 500;
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(82, 30, 95, 0.8);
-    transform: translateY(-2px);
+    background: ${cores.corPrimaria}e6;
+    box-shadow: 0 5px 15px ${cores.corPrimaria}30;
   }
 `
 
@@ -105,20 +168,37 @@ export const GithubButton = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 25px;
+  padding: 15px 30px;
   background: transparent;
   color: ${cores.corPrimaria};
   border: 2px solid ${cores.corPrimaria};
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin-top: 20px;
+  margin: 40px auto 0;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: ${cores.corPrimaria};
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    left: 0;
+  }
 
   &:hover {
-    background: ${cores.corPrimaria};
     color: white;
-    transform: translateY(-3px);
   }
 `

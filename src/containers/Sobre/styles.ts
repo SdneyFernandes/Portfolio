@@ -4,13 +4,19 @@ import { motion } from 'framer-motion'
 
 export const HeroContainer = styled.section`
   position: relative;
-  height: 100vh;
-  min-height: 800px;
+  min-height: 100vh;
+  height: 110vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, ${cores.corDeFundo3} 0%, #0a0a2a 100%);
+  justify-content: center;
+  padding: 40px 20px;
   overflow: hidden;
-  padding: 0 20px;
+  border-bottom: 1px solid ${cores.corTercearia}30;
+  box-shadow: inset 0 -1px 0 ${cores.corTercearia}20;
+
+  @media (max-width: 768px) {
+    height: 200vh;
+  }
 `
 
 export const ParticlesBackground = styled.div`
@@ -20,52 +26,61 @@ export const ParticlesBackground = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
 `
 
 export const HeroContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 50px;
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   position: relative;
   z-index: 1;
   align-items: center;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
 `
 
 export const TextColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
+  justify-content: center;
+  text-align: left;
+  width: 150%;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+  }
 `
 
 export const AvatarColumn = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   @media (max-width: 768px) {
     order: -1;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 `
 
 export const GreetingText = styled(motion.p)`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: ${cores.corPrimaria};
-  margin-bottom: -15px;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: -10px;
 `
 
 export const NameText = styled(motion.h1)`
-  font-size: 4rem;
-  font-weight: 700;
-  color: white;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
   line-height: 1.1;
   margin: 0;
   background: linear-gradient(
@@ -76,30 +91,30 @@ export const NameText = styled(motion.h1)`
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
-  @media (max-width: 992px) {
-    font-size: 3rem;
-  }
-
-  @media (max-width: 576px) {
-    font-size: 2.5rem;
-  }
 `
 
 export const TitleAnimation = styled(motion.div)`
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
   color: ${cores.corSecundaria};
-  min-height: 80px;
+  min-height: 60px;
+  margin-bottom: 1px;
+  line-height: 1.4;
+  text-align: left;
 
-  @media (max-width: 992px) {
-    font-size: 1.8rem;
-    min-height: 70px;
+  @media (max-width: 768px) {
+    text-align: center;
   }
 
-  @media (max-width: 576px) {
-    font-size: 1.5rem;
-    min-height: 60px;
+  span {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.6)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 `
 
@@ -108,20 +123,26 @@ export const DescriptionText = styled(motion.p)`
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.8);
   max-width: 600px;
-  margin-top: -10px;
 
   @media (max-width: 768px) {
     max-width: 100%;
   }
 `
 
+export const HighlightText = styled.span`
+  color: ${cores.corPrimaria};
+  font-weight: 600;
+`
+
 export const ButtonContainer = styled(motion.div)`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  margin-top: 2px;
 
   @media (max-width: 768px) {
     justify-content: center;
+    margin-top: 8px;
   }
 `
 
@@ -133,15 +154,10 @@ export const PrimaryButton = styled(motion.a)`
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
   display: inline-block;
   text-align: center;
-
-  &:hover {
-    box-shadow: 0 5px 15px rgba(82, 30, 95, 0.4);
-  }
+  transition: background 0.3s ease;
 `
 
 export const SecondaryButton = styled(motion.a)`
@@ -154,12 +170,40 @@ export const SecondaryButton = styled(motion.a)`
   font-size: 1rem;
   border: 2px solid ${cores.corPrimaria};
   cursor: pointer;
-  transition: all 0.3s ease;
   display: inline-block;
   text-align: center;
+  transition: background 0.3s ease;
+`
 
-  &:hover {
-    background: rgba(82, 30, 95, 0.1);
-    box-shadow: 0 5px 15px rgba(82, 30, 95, 0.2);
+export const StatsContainer = styled.div`
+  display: flex;
+  gap: 30px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+
+export const StatItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+
+  span {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: ${cores.corPrimaria};
+  }
+`
+
+export const DescriptionList = styled.ul`
+  padding-left: 20px;
+
+  @media (max-width: 768px) {
+    list-style: none;
+    padding-left: 0;
   }
 `

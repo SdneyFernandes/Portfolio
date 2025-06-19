@@ -14,8 +14,8 @@ function App() {
         <Sidebar />
         <Sobre />
         <Servicos />
-        <Habilidades />
         <Projectos />
+        <Habilidades />
         <Contato />
       </Container>
     </>
