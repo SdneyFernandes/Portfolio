@@ -204,5 +204,6 @@ export const GithubButton = styled.a`
 
   @media (max-width: 768px) {
     margin-left: 38px;
+    margin-bottom: 15px;
   }
 `

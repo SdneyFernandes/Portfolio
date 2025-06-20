@@ -5,10 +5,10 @@ export const IconsContainer = styled.div`
   display: flex;
   gap: 20px;
   width: 25%;
-  margin-top: 12px;
+  margin-top: 18px;
 
   @media (max-width: 768px) {
-    margin-left: 100px;
+    margin-left: 95px;
   }
 `
 
