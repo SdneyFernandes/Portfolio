@@ -158,6 +158,6 @@ export const ServiceButton = styled.a`
   }
 
   @media (max-width: 768px) {
-    width: 80%;
+    width: 77%;
   }
 `

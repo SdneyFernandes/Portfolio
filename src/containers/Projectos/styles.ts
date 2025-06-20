@@ -201,4 +201,8 @@ export const GithubButton = styled.a`
   &:hover {
     color: white;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 20px;
+  }
 `
