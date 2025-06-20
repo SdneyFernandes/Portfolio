@@ -5,7 +5,11 @@ export const IconsContainer = styled.div`
   display: flex;
   gap: 20px;
   width: 25%;
-  margin-top: 10px;
+  margin-top: 12px;
+
+  @media (max-width: 768px) {
+    margin-left: 25px;
+  }
 `
 
 export const IconLink = styled.a`
