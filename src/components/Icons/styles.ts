@@ -8,7 +8,7 @@ export const IconsContainer = styled.div`
   margin-top: 12px;
 
   @media (max-width: 768px) {
-    margin-left: 55px;
+    margin-left: 100px;
   }
 `
 
