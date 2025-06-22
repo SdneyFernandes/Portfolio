@@ -122,10 +122,9 @@ export default function Skills() {
             Minhas <HighlightText>Expertises Técnicas</HighlightText>
           </Title>
           <Description>
-            Domínio completo do ciclo de desenvolvimento, desde a concepção até
-            a implantação em produção. Habilidades validadas em{' '}
-            <HighlightText>projetos reais</HighlightText> e constantemente
-            atualizadas.
+            Habilidades desde o desenvolvimento, até a implantação em produção.
+            Habilidades validadas em <HighlightText>projetos</HighlightText> e
+            constantemente atualizadas.
           </Description>
         </motion.div>
       </SectionHeader>

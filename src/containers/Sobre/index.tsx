@@ -114,9 +114,8 @@ const Sobre = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <DescriptionText>
-              Com <HighlightText>3 anos de experiência</HighlightText>, ajudo
-              empresas a transformar desafios técnicos em vantagens
-              competitivas. Especializado em:
+              Com <HighlightText>3 anos de experiência</HighlightText>,
+              transformo desafios técnicos em vantagens competitivas. Entrego:
             </DescriptionText>
 
             <DescriptionList
@@ -133,7 +132,7 @@ const Sobre = () => {
               </li>
               <li>
                 <HighlightText>Arquitetura escalável</HighlightText> para
-                milhares de usuários
+                inumeros usuários
               </li>
               <li>
                 <HighlightText>Integração contínua</HighlightText> e entrega
@@ -143,8 +142,8 @@ const Sobre = () => {
 
             <DescriptionText>
               Minha abordagem combina{' '}
-              <HighlightText>boas práticas de código</HighlightText> com foco
-              nos resultados do negócio.
+              <HighlightText>boas práticas de código</HighlightText> e foco nos
+              resultados.
             </DescriptionText>
           </motion.div>
 
@@ -211,7 +210,7 @@ const Sobre = () => {
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.5 }}
                 >
-                  10+
+                  5+
                 </motion.span>
                 Projetos Concluídos
               </StatItem>
@@ -223,7 +222,7 @@ const Sobre = () => {
                 >
                   100%
                 </motion.span>
-                Satisfação do Cliente
+                Satisfação do Usuario
               </StatItem>
             </StatsContainer>
           </motion.div>

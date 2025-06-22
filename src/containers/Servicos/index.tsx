@@ -4,7 +4,6 @@ import {
   FaShoppingCart,
   FaCogs,
   FaHeadset,
-  FaMobileAlt,
   FaChartLine
 } from 'react-icons/fa'
 import {
@@ -68,23 +67,10 @@ const services = [
     cta: 'Quero minha loja'
   },
   {
-    icon: <FaMobileAlt size={32} />,
-    title: 'Aplicativos Web Progressivos',
-    description:
-      'PWAs com experiência de app nativo, funcionamento offline e engajamento aumentado.',
-    features: [
-      'Instalação direta do navegador',
-      'Notificações push',
-      'Sincronização em background',
-      'Performance otimizada'
-    ],
-    cta: 'Quero um app'
-  },
-  {
     icon: <FaCogs size={32} />,
     title: 'Sistemas Personalizados',
     description:
-      'Soluções sob medida para automatizar processos e aumentar sua produtividade em até 200%.',
+      'Soluções sob medida para automatizar processos e aumentar sua produtividade.',
     features: [
       'CRM e gestão de clientes',
       'Automação de workflows',
@@ -135,9 +121,9 @@ export default function Services() {
             Soluções que <HighlightText>impulsionam</HighlightText> seu negócio
           </Title>
           <Description>
-            Ofereço <HighlightText>resultados mensuráveis</HighlightText>{' '}
-            através de tecnologia de ponta. Cada projeto é otimizado para
-            desempenho, conversão e crescimento sustentável.
+            Ofereço <HighlightText>resultados</HighlightText> através da
+            tecnologia. Cada projeto é otimizado para desempenho, conversão e
+            crescimento sustentável.
           </Description>
         </motion.div>
       </SectionHeader>
