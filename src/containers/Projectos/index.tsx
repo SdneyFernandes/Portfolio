@@ -59,7 +59,7 @@ const projects: Project[] = [
     id: 2,
     title: 'Plataforma de Votação "Monopólio',
     description:
-      'Aplicação Full Stack em arquitetura de microsserviços para digitalizar um processo eleitoral. Inclui autenticação segura, dashboards e gestão de votos em tempo real.',
+      'Aplicação Full Stack em arquitetura de microsserviços para digitalizar um processo eleitoral. Inclui autenticação segura, dashboards e gestão de votos.',
     technologies: [
       'Java',
       'Spring Boot',

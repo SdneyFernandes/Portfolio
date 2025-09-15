@@ -5,7 +5,6 @@ import {
   FaGitAlt,
   FaDocker,
   FaJava,
-  FaCode,
   FaAws,
   FaCogs,
   FaServer,
@@ -19,9 +18,7 @@ import {
   SiStyledcomponents,
   SiRedux,
   SiNextdotjs,
-  SiKubernetes,
-  SiGraphql,
-  SiJenkins
+  SiKubernetes
 } from 'react-icons/si'
 import {
   Container,
@@ -67,8 +64,7 @@ const skillCategories = [
       { icon: <SiSpring size={28} />, name: 'Spring Boot', level: 85 },
       { icon: <SiMysql size={28} />, name: 'MySQL', level: 60 },
       { icon: <SiJunit5 size={28} />, name: 'JUnit', level: 55 },
-      { icon: <FaDatabase size={28} />, name: 'MongoDB', level: 20 },
-      { icon: <SiGraphql size={28} />, name: 'GraphQL', level: 25 }
+      { icon: <FaDatabase size={28} />, name: 'MongoDB', level: 20 }
     ]
   },
   {
@@ -83,27 +79,17 @@ const skillCategories = [
         name: 'Styled Components',
         level: 75
       },
-      { icon: <SiNextdotjs size={28} />, name: 'Next.js', level: 10 }
+      { icon: <SiNextdotjs size={28} />, name: 'Next.js', level: 15 }
     ]
   },
   {
     title: 'DevOps & Cloud',
     icon: <FaCogs size={24} />,
     skills: [
-      { icon: <FaDocker size={28} />, name: 'Docker', level: 50 },
-      { icon: <SiKubernetes size={28} />, name: 'Kubernetes', level: 35 },
-      { icon: <FaAws size={28} />, name: 'AWS', level: 30 },
-      { icon: <SiJenkins size={28} />, name: 'Jenkins', level: 20 },
+      { icon: <FaDocker size={28} />, name: 'Docker', level: 60 },
+      { icon: <SiKubernetes size={28} />, name: 'Kubernetes', level: 15 },
+      { icon: <FaAws size={28} />, name: 'AWS', level: 20 },
       { icon: <FaGitAlt size={28} />, name: 'Git', level: 85 }
-    ]
-  },
-  {
-    title: 'Em Aprendizado',
-    icon: <FaCode size={24} />,
-    skills: [
-      { icon: <SiKubernetes size={28} />, name: 'K8s Avançado', level: 40 },
-      { icon: <FaAws size={28} />, name: 'AWS Solutions', level: 45 },
-      { icon: <SiNextdotjs size={28} />, name: 'Next.js 14', level: 55 }
     ]
   }
 ]
