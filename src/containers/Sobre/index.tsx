@@ -91,13 +91,13 @@ const Sobre = () => {
                 sequence={[
                   'Desenvolvedor Full Stack Java',
                   1500,
-                  'Especialista em Soluções Escaláveis',
+                  'Construtor de Microsserviços com Spring',
                   1500,
-                  'Arquiteto de Microsserviços',
+                  'Arquiteto de Soluções Serverless na AWS',
                   1500,
-                  'Especialista em Spring Boot',
+                  'Desenvolvedor Full Stack com React.js',
                   1500,
-                  'Desenvolvedor React',
+                  'Especialista em APIs RESTful Escaláveis',
                   1500
                 ]}
                 wrapper="span"
@@ -114,8 +114,8 @@ const Sobre = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <DescriptionText>
-              Com <HighlightText>3 anos de experiência</HighlightText>,
-              transformo desafios técnicos em vantagens competitivas. Entrego:
+              Eu transformo <HighlightText>desafios de negócio</HighlightText>,
+              em software de boa performance. Minha especialidade é entregar:
             </DescriptionText>
 
             <DescriptionList
@@ -127,23 +127,22 @@ const Sobre = () => {
               }}
             >
               <li>
-                <HighlightText>Sistemas de alta performance</HighlightText> com
+                <HighlightText>Microsserviços resilientes</HighlightText> com
                 Java/Spring Boot
               </li>
               <li>
-                <HighlightText>Arquitetura escalável</HighlightText> para
-                inumeros usuários
+                <HighlightText>Soluções serverless na AWS</HighlightText>
+                orientadas a eventos
               </li>
               <li>
-                <HighlightText>Integração contínua</HighlightText> e entrega
-                ágil
+                <HighlightText>Interfaces reativas</HighlightText> e modernas
+                com React.js
               </li>
             </DescriptionList>
 
             <DescriptionText>
               Minha abordagem combina{' '}
-              <HighlightText>boas práticas de código</HighlightText> e foco nos
-              resultados.
+              <HighlightText>código limpo</HighlightText> esultados tangíveis
             </DescriptionText>
           </motion.div>
 
@@ -163,7 +162,7 @@ const Sobre = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Vamos conversar →
+                Entrar em Contato →
               </PrimaryButton>
               <SecondaryButton
                 href="/CV - correto Sdney Fernandes.pdf"
@@ -174,7 +173,7 @@ const Sobre = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Baixar currículo
+                Ver Currículo
               </SecondaryButton>
             </ButtonContainer>
             <Icons />
@@ -200,9 +199,9 @@ const Sobre = () => {
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  3+
+                  10+
                 </motion.span>
-                Anos de Experiência
+                Tecnologias & Ferramentas
               </StatItem>
               <StatItem>
                 <motion.span
@@ -212,7 +211,7 @@ const Sobre = () => {
                 >
                   5+
                 </motion.span>
-                Projetos Concluídos
+                Projetos no Portfólio
               </StatItem>
               <StatItem>
                 <motion.span
@@ -220,9 +219,9 @@ const Sobre = () => {
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.6 }}
                 >
-                  100%
+                  200+
                 </motion.span>
-                Satisfação do Usuario
+                Commits no GitHub
               </StatItem>
             </StatsContainer>
           </motion.div>
