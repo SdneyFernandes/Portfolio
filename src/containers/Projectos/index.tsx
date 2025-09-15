@@ -2,13 +2,9 @@ import { motion } from 'framer-motion'
 import {
   FaGithub,
   FaExternalLinkAlt,
-  FaShoppingCart,
   FaServer,
-  FaCalendarAlt,
-  FaCheckDouble,
-  FaExchangeAlt,
-  FaBoxes,
-  FaHeartbeat
+  FaShoppingCart,
+  FaCloudUploadAlt
 } from 'react-icons/fa'
 import {
   Container,
@@ -44,134 +40,56 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Eplay - Plataforma de E-commerce',
+    title: 'Otimizador de Imagens Serverless na AWS',
     description:
-      'Solução completa de e-commerce para games com carrinho, checkout e dashboard administrativo. Implementei otimizações que reduziram o tempo de carregamento em 40%.',
+      'Solução 100% serverless e orientada a eventos que automatiza a otimização de imagens na nuvem. Reduz o tamanho dos arquivos em tempo real durante o upload.',
+    technologies: [
+      'Java',
+      'AWS Lambda',
+      'Amazon S3',
+      'Serverless',
+      'IaC (SAM)'
+    ],
+    githubUrl: 'https://github.com/SdneyFernandes/aws-image-optimizer.git',
+    demoUrl: 'https://github.com/SdneyFernandes/aws-image-optimizer.git',
+    icon: <FaCloudUploadAlt size={24} />,
+    impact: 'Redução de >90% no Tamanho'
+  },
+  {
+    id: 2,
+    title: 'Plataforma de Votação "Monopólio',
+    description:
+      'Aplicação Full Stack em arquitetura de microsserviços para digitalizar um processo eleitoral. Inclui autenticação segura, dashboards e gestão de votos em tempo real.',
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'Microsserviços',
+      'Next.js',
+      'PostgreSQL',
+      'Docker'
+    ],
+    githubUrl:
+      'https://github.com/SdneyFernandes/Sistema-de-Vota-o-Monop-lio---Arquitetura-Completa.git',
+    demoUrl: 'https://www.meuvoto.giize.com/',
+    icon: <FaServer size={24} />,
+    impact: 'Disponibilidade 24/7'
+  },
+  {
+    id: 3,
+    title: 'E-commerce de Games "Eplay',
+    description:
+      'Interface de e-commerce reativa com foco em performance e experiência do usuário. Apresenta um catálogo dinâmico de jogos com gerenciamento de estado via Redux.',
     technologies: [
       'React',
       'TypeScript',
       'Redux',
-      'Styled Components',
-      'Concluido'
+      'Styled Comp.',
+      'API Externa'
     ],
-    githubUrl: 'https://github.com/SdneyFernandes/eplay',
+    githubUrl: 'https://github.com/SdneyFernandes/eplay.git',
     demoUrl: 'https://eplay-one.vercel.app/',
     icon: <FaShoppingCart size={24} />,
-    impact: '40% mais rápido'
-  },
-  {
-    id: 2,
-    title: 'Memelândia - Rede Social (Microserviços)',
-    description:
-      'Arquitetura distribuída com 3 microsserviços independentes, alcançando 99.9% de uptime. Implementei monitoramento com Prometheus e rastreamento distribuído com Zipkin.',
-    technologies: ['Spring Boot', 'Prometheus', 'Zipkin', 'Em Desenvolvimento'],
-    githubUrl: 'https://github.com/SdneyFernandes/memelandia',
-    icon: <FaServer size={24} />,
-    impact: '99.9% uptime'
-  },
-  {
-    id: 3,
-    title: 'Sistema de Agendamento com Fuso e Conflitos',
-    description:
-      'Backend para agendamentos com detecção de conflitos e suporte a múltiplos fusos horários. Envia confirmações por e-mail e permite cancelamento automático com regras.',
-    technologies: [
-      'Spring Boot',
-      'PostgreSQL',
-      'Java Time',
-      'Mail',
-      'Docker',
-      'Em Desenvolvimento'
-    ],
-    githubUrl: 'https://github.com/SdneyFernandes/scheduling-service',
-    icon: <FaCalendarAlt size={24} />,
-    impact: 'Agendamentos sem conflito'
-  },
-  {
-    id: 4,
-    title: 'Workflow de Aprovações',
-    description:
-      'Sistema para aprovar solicitações em múltiplas etapas com regras configuráveis. Suporta auditoria, logs e diferentes perfis de aprovadores.',
-    technologies: [
-      'Spring Boot',
-      'PostgreSQL',
-      'RabbitMQ',
-      'Spring StateMachine',
-      'Em Desenvolvimento'
-    ],
-    githubUrl: 'https://github.com/SdneyFernandes/approval-workflow',
-    icon: <FaCheckDouble size={24} />,
-    impact: 'Fluxo de aprovação automatizado'
-  },
-  {
-    id: 5,
-    title: 'Integração com ERP via Webhook',
-    description:
-      'Microserviço que consome APIs de ERPs e lida com eventos via webhook. Implementa retry, fallback e autenticação com HMAC.',
-    technologies: [
-      'Spring Boot',
-      'Webhook',
-      'Retry',
-      'Docker',
-      'HMAC',
-      'Em Desenvolvimento'
-    ],
-    githubUrl: 'https://github.com/SdneyFernandes/erp-integration-service',
-    icon: <FaExchangeAlt size={24} />,
-    impact: 'Integração robusta com ERPs'
-  },
-  {
-    id: 6,
-    title: 'Controle de Estoque com Reposição Automática',
-    description:
-      'API que monitora níveis de estoque e dispara alertas de reposição baseados em limite mínimo. Suporte a múltiplos armazéns.',
-    technologies: [
-      'Spring Boot',
-      'PostgreSQL',
-      'Redis',
-      'Scheduler',
-      'Docker',
-      'Em Desenvolvimento'
-    ],
-    githubUrl: 'https://github.com/SdneyFernandes/stock-alert-service',
-    icon: <FaBoxes size={24} />,
-    impact: 'Reposição inteligente de estoque'
-  },
-  {
-    id: 7,
-    title: 'Dashboard de Saúde de Serviços',
-    description:
-      'API que expõe métricas como memória, threads e tempo de resposta dos serviços. Integra com Prometheus e Grafana.',
-    technologies: [
-      'Spring Boot',
-      'Micrometer',
-      'Prometheus',
-      'Grafana',
-      'Docker',
-      'Em Desenvolvimento'
-    ],
-    githubUrl: 'https://github.com/SdneyFernandes/health-dashboard',
-    icon: <FaHeartbeat size={24} />,
-    impact: 'Monitoramento de APIs'
-  },
-  {
-    id: 8,
-    title: 'Sistema de Votação em Tempo Real',
-    description:
-      'Sistema completo e escalável de votação com múltiplas opções, contagem em tempo real via WebSocket, autenticação JWT e notificações por evento. Utiliza arquitetura de microsserviços com Kafka, Redis, Prometheus e Kubernetes.',
-    technologies: [
-      'Spring Boot',
-      'Kafka',
-      'Redis',
-      'WebSocket',
-      'React',
-      'Kubernetes',
-      'Prometheus',
-      'Grafana',
-      'Em Desenvolvimento'
-    ],
-    githubUrl: 'https://github.com/SdneyFernandes/voting-system',
-    icon: <FaCheckDouble size={24} />,
-    impact: 'Escalabilidade + votos em tempo real'
+    impact: '30% Mais Rápido'
   }
 ]
 
