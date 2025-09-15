@@ -1,11 +1,5 @@
 import { motion } from 'framer-motion'
-import {
-  FaGlobe,
-  FaShoppingCart,
-  FaCogs,
-  FaHeadset,
-  FaChartLine
-} from 'react-icons/fa'
+import { FaGlobe, FaShoppingCart, FaCogs } from 'react-icons/fa'
 import {
   Container,
   Title,
@@ -42,68 +36,42 @@ const staggerContainer = {
 const services = [
   {
     icon: <FaGlobe size={32} />,
-    title: 'Sites Profissionais',
+    title: 'Cloud & Arquitetura Serverless',
     description:
-      'Desenvolvimento de websites modernos e responsivos que representam sua marca e convertem visitantes em clientes.',
+      'Implementação de soluções modernas na nuvem AWS, com foco em automação, arquitetura orientada a eventos e otimização de custos.',
     features: [
-      'Design responsivo e acessível',
-      'Otimização SEO avançada',
-      'Integração com redes sociais',
-      'Performance de alto nível'
+      'Funções com AWS Lambda',
+      'Armazenamento com Amazon S3',
+      'Infraestrutura como Código (IaC) com SAM',
+      'Automação de Processos na Nuvem'
     ],
-    cta: 'Quero um site'
+    cta: 'Ver Projetos de Cloud'
   },
   {
     icon: <FaShoppingCart size={32} />,
-    title: 'E-commerce Completo',
+    title: 'Frontend & Interfaces Reativas',
     description:
-      'Lojas virtuais de alto desempenho com taxa de conversão otimizada e experiência de compra premium.',
+      'Desenvolvimento de interfaces de usuário dinâmicas, intuitivas e que proporcionam uma experiência de uso memorável.',
     features: [
-      'Checkout seguro e otimizado',
-      'Integração com marketplaces',
-      'Painel administrativo completo',
-      'Relatórios de desempenho'
+      'Aplicações com React.js & TypeScript',
+      'Gerenciamento de Estado (Redux/Context)',
+      'Componentização e Design Systems',
+      'Otimização de Performance (WPO)'
     ],
-    cta: 'Quero minha loja'
+    cta: 'Ver Projetos Frontend'
   },
   {
     icon: <FaCogs size={32} />,
-    title: 'Sistemas Personalizados',
+    title: 'Desenvolvimento Backend & Microsserviços',
     description:
-      'Soluções sob medida para automatizar processos e aumentar sua produtividade.',
+      'Criação do núcleo de sistemas, com foco em performance, segurança e escalabilidade, utilizando o ecossistema Java e Spring.',
     features: [
-      'CRM e gestão de clientes',
-      'Automação de workflows',
-      'Integração com APIs',
-      'Dashboards inteligentes'
+      'APIs RESTful com Spring Boot',
+      'Arquitetura de Microsserviços',
+      'Segurança com Spring Security & JWT',
+      'Persistência de Dados com JPA/Hibernate'
     ],
-    cta: 'Quero um sistema'
-  },
-  {
-    icon: <FaChartLine size={32} />,
-    title: 'Otimização Técnica',
-    description:
-      'Diagnóstico e correção de problemas de performance, segurança e experiência do usuário.',
-    features: [
-      'Auditoria completa',
-      'Otimização de carregamento',
-      'Melhoria de SEO técnico',
-      'Análise de concorrência'
-    ],
-    cta: 'Otimizar meu projeto'
-  },
-  {
-    icon: <FaHeadset size={32} />,
-    title: 'Consultoria Estratégica',
-    description:
-      'Planejamento tecnológico para alinhar sua infraestrutura com seus objetivos de negócio.',
-    features: [
-      'Roadmap tecnológico',
-      'Arquitetura escalável',
-      'Análise de viabilidade',
-      'Gestão de equipes'
-    ],
-    cta: 'Falar com especialista'
+    cta: 'Ver Projetos Backend'
   }
 ]
 
@@ -118,12 +86,15 @@ export default function Services() {
           viewport={{ once: true, margin: '-100px' }}
         >
           <Title>
-            Soluções que <HighlightText>impulsionam</HighlightText> seu negócio
+            Minhas <HighlightText>Especialidades</HighlightText> Técnicas
           </Title>
           <Description>
-            Ofereço <HighlightText>resultados</HighlightText> através da
-            tecnologia. Cada projeto é otimizado para desempenho, conversão e
-            crescimento sustentável.
+            Meu foco é a{' '}
+            <HighlightText>
+              construção de software robusto e escalável
+            </HighlightText>{' '}
+            aplicando as melhores práticas de arquitetura e desenvolvimento para
+            criar soluções.
           </Description>
         </motion.div>
       </SectionHeader>

@@ -131,7 +131,7 @@ const Sobre = () => {
                 Java/Spring Boot
               </li>
               <li>
-                <HighlightText>Soluções serverless na AWS</HighlightText>
+                <HighlightText>Soluções serverless na AWS </HighlightText>
                 orientadas a eventos
               </li>
               <li>
@@ -142,7 +142,8 @@ const Sobre = () => {
 
             <DescriptionText>
               Minha abordagem combina{' '}
-              <HighlightText>código limpo</HighlightText> esultados tangíveis
+              <HighlightText>código limpo </HighlightText> e resultados
+              tangíveis
             </DescriptionText>
           </motion.div>
 
