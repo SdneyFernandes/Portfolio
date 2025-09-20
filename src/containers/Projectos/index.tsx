@@ -4,7 +4,8 @@ import {
   FaExternalLinkAlt,
   FaServer,
   FaShoppingCart,
-  FaCloudUploadAlt
+  FaCloudUploadAlt,
+  FaProjectDiagram
 } from 'react-icons/fa'
 import {
   Container,
@@ -90,6 +91,26 @@ const projects: Project[] = [
     demoUrl: 'https://eplay-one.vercel.app/',
     icon: <FaShoppingCart size={24} />,
     impact: '30% Mais Rápido'
+  },
+  {
+    id: 4,
+    title: 'Sistema de Detecção de Fraudes em Tempo Real',
+    description:
+      'Ecossistema de microserviços orientado a eventos que analisa transações financeiras em tempo real com Apache Kafka, Docker e Kubernetes.',
+    technologies: [
+      'Java',
+      'Kafka',
+      'Kubernetes',
+      'Docker',
+      'Microserviços',
+      'Spring Boot'
+    ],
+    githubUrl:
+      'https://github.com/SdneyFernandes/sistema-deteccao-fraudes-kafka.git',
+    demoUrl:
+      'https://github.com/SdneyFernandes/sistema-deteccao-fraudes-kafka.git',
+    icon: <FaProjectDiagram size={24} />,
+    impact: 'Análise em Tempo Real'
   }
 ]
 
