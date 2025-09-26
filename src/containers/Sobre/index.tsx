@@ -166,8 +166,8 @@ const Sobre = () => {
                 Entrar em Contato →
               </PrimaryButton>
               <SecondaryButton
-                href="/CV - correto Sdney Fernandes.pdf"
-                download="CV - Sdney Fernandes.pdf"
+                href="/CV - SdneyPereira27_09 (1).pdf"
+                download="CV - SdneyPereira27_09 (1).pdf"
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: `${cores.corPrimaria}20`

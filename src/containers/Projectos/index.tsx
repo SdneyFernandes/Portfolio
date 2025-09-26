@@ -5,7 +5,8 @@ import {
   FaServer,
   FaShoppingCart,
   FaCloudUploadAlt,
-  FaProjectDiagram
+  FaProjectDiagram,
+  FaBell
 } from 'react-icons/fa'
 import {
   Container,
@@ -41,33 +42,45 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Otimizador de Imagens Serverless na AWS',
+    title: 'NotificaHub - Central de Notificações',
     description:
-      'Solução 100% serverless e orientada a eventos que automatiza a otimização de imagens na nuvem. Reduz o tamanho dos arquivos em tempo real durante o upload.',
+      'Uma solução inteligente que centraliza todos os comunicados de uma empresa (e-mail, SMS, etc.). Outros sistemas simplesmente pedem "envie esta mensagem", e o NotificaHub cuida de todo o resto de forma segura e testada.',
     technologies: [
       'Java',
-      'AWS Lambda',
-      'Amazon S3',
-      'Serverless',
-      'IaC (SAM)'
+      'Spring Boot',
+      'Spring Security',
+      'JWT',
+      'TDD',
+      'OpenFeign'
     ],
-    githubUrl: 'https://github.com/SdneyFernandes/aws-image-optimizer.git',
-    demoUrl: 'https://github.com/SdneyFernandes/aws-image-optimizer.git',
-    icon: <FaCloudUploadAlt size={24} />,
-    impact: 'Redução de >90% no Tamanho'
+    githubUrl: 'https://github.com/SdneyFernandes/NotificaHub.git',
+    demoUrl: 'https://github.com/SdneyFernandes/NotificaHub.git',
+    icon: <FaBell size={24} />,
+    impact: 'API Segura & Testada'
   },
   {
     id: 2,
-    title: 'Plataforma de Votação "Monopólio',
+    title: 'Sistema de Detecção de Fraudes em Tempo Real',
     description:
-      'Aplicação Full Stack em arquitetura de microsserviços para digitalizar um processo eleitoral. Inclui autenticação segura, dashboards e gestão de votos.',
+      'Um sistema de segurança que simula a análise de milhares de transações financeiras por segundo para detectar fraudes instantaneamente, antes que o prejuízo aconteça.',
+    technologies: ['Java', 'Kafka', 'Kubernetes', 'Docker', 'Microserviços'],
+    githubUrl:
+      'https://github.com/SdneyFernandes/sistema-deteccao-fraudes-kafka', // Verifique o link
+    demoUrl: undefined,
+    icon: <FaProjectDiagram size={24} />,
+    impact: 'Análise em Tempo Real'
+  },
+  {
+    id: 3,
+    title: 'Plataforma de Votação "Monopólio"',
+    description:
+      'Uma plataforma online completa que transforma votações manuais em papel em um processo digital, seguro e transparente para comunidades acadêmicas.',
     technologies: [
       'Java',
       'Spring Boot',
       'Microsserviços',
       'Next.js',
-      'PostgreSQL',
-      'Docker'
+      'PostgreSQL'
     ],
     githubUrl:
       'https://github.com/SdneyFernandes/Sistema-de-Vota-o-Monop-lio---Arquitetura-Completa.git',
@@ -76,10 +89,21 @@ const projects: Project[] = [
     impact: 'Disponibilidade 24/7'
   },
   {
-    id: 3,
-    title: 'E-commerce de Games "Eplay',
+    id: 4,
+    title: 'Otimizador de Imagens na Nuvem (AWS)',
     description:
-      'Interface de e-commerce reativa com foco em performance e experiência do usuário. Apresenta um catálogo dinâmico de jogos com gerenciamento de estado via Redux.',
+      'Uma ferramenta automática na nuvem da Amazon (AWS) que recebe imagens pesadas e as devolve otimizadas para a web, tornando qualquer site muito mais rápido.',
+    technologies: ['Java', 'AWS Lambda', 'Amazon S3', 'Serverless', 'IaC'],
+    githubUrl: 'https://github.com/SdneyFernandes/aws-image-optimizer.git',
+    demoUrl: undefined,
+    icon: <FaCloudUploadAlt size={24} />,
+    impact: 'Redução de >90% no Tamanho'
+  },
+  {
+    id: 5,
+    title: 'E-commerce de Games "Eplay"',
+    description:
+      'A vitrine de uma loja de games online, construída para ser extremamente rápida e fácil de usar em qualquer dispositivo, seja no computador ou no celular.',
     technologies: [
       'React',
       'TypeScript',
@@ -91,26 +115,6 @@ const projects: Project[] = [
     demoUrl: 'https://eplay-one.vercel.app/',
     icon: <FaShoppingCart size={24} />,
     impact: '30% Mais Rápido'
-  },
-  {
-    id: 4,
-    title: 'Sistema de Detecção de Fraudes em Tempo Real',
-    description:
-      'Ecossistema de microserviços orientado a eventos que analisa transações financeiras em tempo real com Apache Kafka, Docker e Kubernetes.',
-    technologies: [
-      'Java',
-      'Kafka',
-      'Kubernetes',
-      'Docker',
-      'Microserviços',
-      'Spring Boot'
-    ],
-    githubUrl:
-      'https://github.com/SdneyFernandes/sistema-deteccao-fraudes-kafka.git',
-    demoUrl:
-      'https://github.com/SdneyFernandes/sistema-deteccao-fraudes-kafka.git',
-    icon: <FaProjectDiagram size={24} />,
-    impact: 'Análise em Tempo Real'
   }
 ]
 
