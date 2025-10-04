@@ -85,7 +85,7 @@ const Sobre = () => {
             transition={{ duration: 0.8 }}
           >
             <GreetingText>Olá, Eu sou</GreetingText>
-            <NameText>Sdney Fernandes</NameText>
+            <NameText>Sydney Fernandes</NameText>
             <TitleAnimation>
               <TypeAnimation
                 sequence={[
@@ -167,7 +167,7 @@ const Sobre = () => {
               </PrimaryButton>
               <SecondaryButton
                 href="/CV - SdneyPereira02_10.pdf"
-                download="CV - SdneyPereira02_10.pdf
+                download="CV - SdneyPereira02_10.pdf"
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: `${cores.corPrimaria}20`
@@ -233,3 +233,4 @@ const Sobre = () => {
 }
 
 export default Sobre
+
