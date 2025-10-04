@@ -85,7 +85,7 @@ const Sobre = () => {
             transition={{ duration: 0.8 }}
           >
             <GreetingText>Olá, Eu sou</GreetingText>
-            <NameText>Sydney Fernandes</NameText>
+            <NameText>Sdney Fernandes</NameText>
             <TitleAnimation>
               <TypeAnimation
                 sequence={[
@@ -220,7 +220,7 @@ const Sobre = () => {
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.6 }}
                 >
-                  200+
+                  400+
                 </motion.span>
                 Commits no GitHub
               </StatItem>
