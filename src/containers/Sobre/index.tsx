@@ -115,7 +115,7 @@ const Sobre = () => {
           >
             <DescriptionText>
               Eu transformo <HighlightText>desafios de negócio</HighlightText>,
-              em software de boa performance. Minha especialidade é entregar:
+              em software de performance. Minha especialidade é entregar:
             </DescriptionText>
 
             <DescriptionList
