@@ -115,6 +115,24 @@ const projects: Project[] = [
     demoUrl: 'https://eplay-one.vercel.app/',
     icon: <FaShoppingCart size={24} />,
     impact: '30% Mais Rápido'
+  },
+  {
+    id: 6,
+    title: 'LinkHub - Alta Performance & CI/CD',
+    description:
+      'Microsserviço de encurtador de URL Otimizado com Redis Cache, Observabilidade (Prometheus/Grafana) e Pipeline de Entrega Contínua (CI/CD com GitHub Actions).',
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'Redis',
+      'Flyway',
+      'CI/CD',
+      'Prometheus'
+    ],
+    githubUrl: 'https://github.com/SdneyFernandes/linkhub-service',
+    demoUrl: 'https://hub.docker.com/r/fsdney/linkhub-service',
+    icon: <FaProjectDiagram size={24} />,
+    impact: 'Performance Otimizada & Entrega Automatizada'
   }
 ]
 
